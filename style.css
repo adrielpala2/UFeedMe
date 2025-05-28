@@ -108,17 +108,67 @@ body {
   margin-bottom: 10px;
   }
 
+.camps {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 30px;
+  width: 50%;
+  margin-left: 25%;
+}
+
+.answer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  height: 500px;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  font-size: 1.1rem;
+}
+
+    input[type="email"],
+    textarea {
+      width: 100%;
+      padding: 15px;
+      border: none;
+      border-radius: 15px;
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      font-size: 1.1rem;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: #ddd;
+    }
+
+    textarea {
+      resize: none;
+      height: 150px;
+    }
+
+    button {
+      padding: 10px 30px;
+      font-size: 1rem;
+      background: transparent;
+      border: 2px solid white;
+      border-radius: 15px;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    button:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
 @media (max-width: 768px) {
   .exposicoes {
     flex-direction: column;
     align-items: center;
-  }
-
-  .card {
-    width: 90%;
-  }
-
-  .titulo {
-    font-size: 2rem;
   }
 }
