@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>uFeedMe</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro&family=Gruppo&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="Images/alvo.png">
+</head>
+<body>
+    <div class="container">
+        <h1 class="titulo">Escolha uma Exposição</h1>
+        <div class="exposicoes">
+            <a href="opinion.html" class="card-link">
+                <div class="card" id="card-traje">
+                    <img src="images/astronaut.png" alt="Traje Espacial">
+                    <h2>TRAJE ESPACIAL DE MARTE</h2>
+                    <p>
+                        Explore o traje espacial usado na histórica missão a Marte! Descubra sua tecnologia inovadora, design avançado e como ele garantiu a sobrevivência dos astronautas no ambiente marciano.
+                    </p>
+                </div>
+			</a>
+
+            <a href="opinion.html" class="card-link">
+                <div class="card" id="card-foguete">
+                    <img src="images/rocketLeavingMars.png" alt="Foguete para Marte">
+                    <h2>O FOGUETE PARA MARTE</h2>
+                    <p>
+                        Conheça o foguete que levou a humanidade a Marte! Descubra sua engenharia revolucionária, potência incomparável e como ele tornou possível essa incrível jornada interplanetária.
+                    </p>
+                </div>
+            </a>
+
+            <a href="opinion.html" class="card-link">
+                <div class="card" id="card-agua">
+                    <img src="images/waterInMars.png" alt="Água em Marte">
+                    <h2>ÁGUA EM MARTE</h2>
+                    <p>
+                        Descubra os segredos da água em Marte! Explore evidências de antigos rios e lagos, entenda sua importância para a vida e como ela pode viabilizar futuras missões ao planeta vermelho.
+                    </p>
+                </div>
+            </a>
+        </div>
+    </div>
+	
+	<script>
+	  document.querySelectorAll(".card-link").forEach(link => {
+		link.addEventListener("click", (event) => {
+		  const cardId = event.currentTarget.querySelector(".card").id;
+
+		  const exposicoes = {
+			"card-traje": "traje espacial de marte",
+			"card-foguete": "o foguete para marte",
+			"card-agua": "água em marte"
+		  };
+
+		  const exposicaoEscolhida = exposicoes[cardId];
+
+		  // Limpa o localStorage antes de salvar
+		  localStorage.clear();
+
+		  localStorage.setItem("exposicao", exposicaoEscolhida);
+
+		  console.log("Exposição salva:", exposicaoEscolhida);
+		});
+	  });
+	</script>
+
+
+</body>
+</html>

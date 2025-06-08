@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>uFeedMe | Nível de Satisfação</title>
+  <link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" href="Images/alvo.png">
+</head>
+<body>
+  <main>
+    <h1 class="titulo">Selecione o seu Nível de Satisfação</h1>
+    <div class="emotions">
+      <a href="data.html" class="emotion" id="excelente">
+        <img src="images/veryHappy.png" alt="Excelente">
+        <span>EXCELENTE</span>
+      </a>
+
+      <a href="data.html" class="emotion" id="bom">
+        <img src="images/happy.png" alt="Bom">
+        <span>BOM</span>
+      </a>
+
+      <a href="data.html" class="emotion" id="neutro">
+        <img src="images/neutral.png" alt="Neutro">
+        <span>NEUTRO</span>
+      </a>
+
+      <a href="data.html" class="emotion" id="ruim">
+        <img src="images/sad.png" alt="Ruim">
+        <span>RUIM</span>
+      </a>
+
+      <a href="data.html" class="emotion" id="pessimo">
+        <img src="images/verySad.png" alt="Péssimo">
+        <span>PÉSSIMO</span>
+      </a>
+
+    </div>
+
+  </main>
+  
+  
+  <script>
+  document.querySelectorAll(".emotion").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const opiniao = btn.id;
+
+      const opinioes = {
+        "excelente": "excelente",
+        "bom": "bom",
+        "neutro": "neutro",
+        "ruim": "ruim",
+        "pessimo": "péssimo"
+      };
+
+      localStorage.setItem("opiniao", opinioes[opiniao]);
+      console.log("Opinião salva:", opinioes[opiniao]);
+
+      const exposicao = localStorage.getItem("exposicao");
+      console.log("Exposição anterior:", exposicao);
+    });
+  });
+</script>
+
+</body>
+</html>

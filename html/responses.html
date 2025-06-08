@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>uFeedMe | Respostas</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro&family=Gruppo&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="Images/alvo.png">
+</head>
+<body>
+    <div class="container">
+        <h1 class="titulo">Agradecemos sua Participação!</h1>
+
+        <div class="answer">
+        </div>
+    </div>
+	
+	<script>
+	  const respostaDiv = document.querySelector(".answer");
+
+	  const exposicao = localStorage.getItem("exposicao");
+	  const emotion = localStorage.getItem("opiniao");
+	  const email = localStorage.getItem("email");
+	  const sugestao = localStorage.getItem("sugestao");
+
+	  if (exposicao || emotion || email || sugestao) {
+		respostaDiv.innerHTML = `
+		  <strong>Exposição Escolhida:</strong> ${exposicao || "Não informado"}<br><br>
+		  <strong>Nível de Satisfação:</strong> ${emotion || "Não informado"}<br><br>
+		  <strong>E-mail:</strong> ${email || "Não informado"}<br><br>
+		  <strong>Sugestão:</strong> ${sugestao || "Não informado"}<br>
+		`;
+
+		// Monta os dados a serem enviados
+		const dados = {
+		  id: 0,
+		  email: email,
+		  exposicao_Escolhida: exposicao,
+		  opiniao: emotion,
+		  sugestao: sugestao,
+		  data_Registro: new Date().toISOString()
+		};
+
+		// Envia os dados para a API
+		fetch("http://localhost:5000/api/avaliacoes", {
+		  method: "POST",
+		  headers: {
+			"Content-Type": "application/json"
+		  },
+		  body: JSON.stringify(dados)
+		})
+		.then(response => {
+		  if (!response.ok) {
+			throw new Error("Erro ao salvar os dados no banco.");
+		  }
+		  return response.json();
+		})
+		.then(data => {
+		  console.log("Dados salvos com sucesso:", data);
+		})
+		.catch(error => {
+		  console.error("Erro na requisição:", error);
+		});
+
+	  } else {
+		respostaDiv.innerHTML = "<p>Nenhum dado encontrado no localStorage.</p>";
+	  }
+	</script>
+
+</body>
+</html>

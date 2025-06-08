@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>uFeedMe | Sugestões</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro&family=Gruppo&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" href="Images/alvo.png">
+</head>
+<body>
+  <main>
+    
+    <h1 class="titulo">Fique por Dentro das Novidades!</h1>
+    <form action="responses.html" method="GET">
+
+      <div class="camps">
+
+        <input type="email" name="email" placeholder="E-mail" required>
+        <textarea name="sugestao" placeholder="Deixe uma sugestão..." required></textarea>
+
+        <button type="submit">ENVIAR</button>
+      </div>
+
+    </form>
+
+  </main>
+	<script>
+	  const form = document.querySelector("form");
+
+	  form.addEventListener("submit", function(event) {
+		const email = form.elements["email"].value;
+		const sugestao = form.elements["sugestao"].value;
+
+		// Salva os dados no localStorage
+		localStorage.setItem("email", email);
+		localStorage.setItem("sugestao", sugestao);
+
+		console.log("Dados salvos:", { email, sugestao });
+		// Permite o envio normal após salvar
+	  });
+	</script>
+
+</body>
+</html>
